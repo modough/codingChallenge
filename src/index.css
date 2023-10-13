@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed&display=swap");
+
+:root {
+  --white: #ffffff;
+  --light-grey: #8b949e;
+  --light-green: #1ecc78;
+  --green: #0cb765;
+  --red: #eb1d27;
+  --blue: rgba(0, 255, 255, 0.7);
+  --dark-red: #d31017;
+  --dark-grey: #363636;
+  --black: #2c2c2c;
+  --deep-black: #000000;
+  --orange: #f09e49;
+  --box-shadow: 0px 0px 5px 5px rgba(0, 255, 255, 0.7);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
+#root {
+  width: 100%;
+  min-height: 100dvh;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Share Tech Mono", monospace;
+}
+
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+li {
+  text-decoration: none;
+  list-style-type: none;
+}
+button {
+  cursor: pointer;
+}
+.email,
+.password {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  color: var(--white);
+  margin-bottom: 5px;
+}
+form input {
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+form button {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 40px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--blue);
+}
+form button:hover {
+  background-color: var(--white);
+  box-shadow: 0px 0px 5px 5px rgba(0, 255, 255, 0.7);
+}
+form p {
+  margin-bottom: 10px;
+  font-size: 10px;
+  color: var(--blue);
+}
+form p:hover {
+  color: var(--white);
+}

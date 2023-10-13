@@ -1,0 +1,40 @@
+.languageLink {
+  display: flex;
+  flex-direction: column;
+}
+.languageLink a {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  gap: 25px;
+  width: 100%;
+  color: var(--light-grey);
+  font-size: 20px;
+}
+
+.languageLink a:hover {
+  color: var(--blue);
+  background-color: var(--black);
+}
+.languageLink .icon {
+  position: relative;
+}
+.languageLink .icon svg {
+  font-size: 30px;
+}
+.languageLink .icon svg:nth-child(2) {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+@media screen and (max-width: 1520px) {
+  .languageLink a {
+    padding: 15px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .languageLink a {
+    padding: 5px;
+  }
+}

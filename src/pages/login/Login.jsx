@@ -1,0 +1,36 @@
+import { Link, useNavigate } from 'react-router-dom';
+import './login.css';
+
+function Login() {
+    const navigate = useNavigate()
+    const handleSubmit = () => {
+        navigate('/home')
+    };
+    return (
+        <section className='login'>
+            <form>
+                <div className="email" >
+                    <label>Email</label>
+                    <input type="email" placeholder="Entrez votre email" />
+                </div>
+                <div className="password" >
+                    <label>Mot de passe</label>
+                    <input type="password" placeholder="Entrez votre mot de passe" />
+                </div>
+                <button type="submit" onClick={handleSubmit}>
+                    Valider
+                </button>
+                <div>
+                    <Link to='/register'>
+                        <p>Pas de compte ? Inscrivez-vous</p>
+                    </Link>
+                    <Link to='/'>
+                        <p>Récuperer votre mot de passe.</p>
+                    </Link>
+                </div>
+            </form>
+        </section>
+    )
+}
+
+export default Login
