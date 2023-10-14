@@ -6,6 +6,7 @@
   gap: 50px;
   padding: 250px;
   background-image: url(/src/assets/bg.webp);
+  min-width: 755px;
 }
 .landing .landing-text {
   display: flex;
@@ -39,12 +40,4 @@
   color: var(--black);
   background-color: var(--white);
   box-shadow: 0px 0px 5px 5px rgba(0, 255, 255, 0.7);
-}
-
-@media screen and (max-width: 1190px) {
-  .landing {
-    flex-direction: column;
-    height: 800px;
-    padding: 350px 150px 150px 150px;
-  }
 }

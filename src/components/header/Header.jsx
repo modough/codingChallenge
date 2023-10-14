@@ -1,11 +1,12 @@
 import './header.css';
 import logo from '../../assets/gear.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { AiOutlineClose } from 'react-icons/ai';
 
 function Header({ setShow, show }) {
+    const { pathname } = useLocation()
 
     return (
         <section className='header'>
@@ -24,8 +25,8 @@ function Header({ setShow, show }) {
                     <li>S&apos;inscrire</li>
                 </Link>
                 {!show ?
-                    <RxHamburgerMenu className='menuBurger' onClick={() => setShow(!show)} /> :
-                    <AiOutlineClose className='close' onClick={() => setShow(!show)} />
+                    <RxHamburgerMenu className={pathname !== '/' && 'menuBurger'} onClick={() => setShow(!show)} /> :
+                    <AiOutlineClose className={pathname !== '/' && 'close'} onClick={() => setShow(!show)} />
                 }
             </ul>
         </section >
