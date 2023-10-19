@@ -31,7 +31,7 @@
   cursor: pointer;
 }
 .pagesLink li:hover {
-  color: var(--white);
+  color: var(--blue);
 }
 .pagesLink .menuBurger {
   display: none;

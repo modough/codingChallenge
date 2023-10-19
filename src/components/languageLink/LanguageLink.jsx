@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import './languageLink.css';
+import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import {
     TbBrandJavascript,
@@ -15,7 +16,7 @@ import {
 import { FaJava, FaRust } from 'react-icons/fa'
 import { SiCplusplus, SiCsharp } from 'react-icons/si'
 
-function LanguageLink({ toggle }) {
+function LanguageLink({ toggle, setToggle }) {
     const languageArray = [
         {
             "language": "JavaScript",
@@ -70,10 +71,17 @@ function LanguageLink({ toggle }) {
                     {!toggle && language.language}
                 </Link>
             ))}
+            <div className='languageLink-toggle' onClick={() => setToggle(!toggle)}>
+                {!toggle ? <MdArrowBackIosNew /> : <MdArrowForwardIos />}
+            </div>
+            <Link to='/login' className='loginLink'>
+                <li>Identifier-vous !</li>
+            </Link>
         </section>
     )
 }
 LanguageLink.propTypes = {
-    toggle: PropTypes.bool
+    toggle: PropTypes.bool,
+    setToggle: PropTypes.func
 }
 export default LanguageLink

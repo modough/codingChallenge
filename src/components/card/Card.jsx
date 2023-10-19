@@ -1,5 +1,7 @@
 import { MdArrowForwardIos } from 'react-icons/md';
 import PropTypes from 'prop-types';
+import './card.css';
+
 
 function Card({ img, text, title }) {
     return (
