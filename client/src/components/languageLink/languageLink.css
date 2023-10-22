@@ -1,0 +1,72 @@
+.languageLink {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.languageLink::-webkit-scrollbar {
+  display: none;
+}
+.languageLink a {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  gap: 25px;
+  width: 100%;
+  color: var(--light-grey);
+  font-size: 20px;
+}
+
+.languageLink a:hover {
+  color: var(--blue);
+  background-color: var(--black);
+}
+.languageLink .icon {
+  position: relative;
+}
+.languageLink .icon svg {
+  font-size: 30px;
+}
+.languageLink .icon svg:nth-child(2) {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+.languageLink-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 20px 10px 150px 10px;
+  gap: 55px;
+  width: 100%;
+  color: var(--light-grey);
+  cursor: pointer;
+  font-size: 40px;
+}
+.languageLink-toggle:hover {
+  color: var(--blue);
+  background-color: var(--black);
+}
+.languageLink a.loginLink {
+  display: none;
+}
+@media screen and (max-width: 1520px) {
+  .languageLink a {
+    padding: 15px;
+  }
+  .languageLink-toggle {
+    display: none;
+  }
+
+  .languageLink a.loginLink {
+    display: flex;
+    align-items: center;
+    padding: 30px 15px;
+    color: var(--orange);
+  }
+}
+@media screen and (max-width: 400px) {
+  .languageLink a {
+    padding: 5px;
+  }
+}

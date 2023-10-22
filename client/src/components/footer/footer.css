@@ -1,0 +1,116 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  min-height: 300px;
+  padding: 50px 50px 50px 250px;
+  background-color: var(--dark-blue);
+}
+
+.footer.toggle {
+  padding-left: 150px;
+}
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.appLogo {
+  width: 150px;
+}
+.logo p {
+  color: var(--white);
+}
+
+.footer-right {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.footer-right p {
+  color: var(--white);
+  width: 25%;
+}
+.lessons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 200px;
+  gap: 20px;
+}
+.lessons a {
+  font-size: 20px;
+}
+.lessons a:hover {
+  color: var(--orange);
+}
+.socialMedia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.socialMedia svg {
+  cursor: pointer;
+  color: var(--white);
+}
+.facebook {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+.youtube {
+  width: 60px;
+  height: 60px;
+}
+.twitter {
+  width: 38px;
+  height: 38px;
+}
+.linkedin {
+  width: 38px;
+  height: 38px;
+}
+.twitch {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+.footer.show::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  backdrop-filter: blur(4px);
+  z-index: -1;
+}
+
+@media screen and (max-width: 1520px) {
+  .footer {
+    padding-left: 50px;
+    gap: 20px;
+  }
+  .footer.show {
+    padding-left: 300px;
+  }
+  .footer.show .logo {
+    flex: 1;
+  }
+  .footer.show .lessons a {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 1120px) {
+  .socialMedia {
+    flex-direction: column;
+  }
+  .logoTitle {
+    font-size: 1.2rem;
+  }
+}
