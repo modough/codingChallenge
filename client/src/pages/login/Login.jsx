@@ -9,9 +9,9 @@ function Login() {
     return (
         <section className='login'>
             <form>
-                <div className="email" >
-                    <label>Email</label>
-                    <input type="email" placeholder="Entrez votre email" />
+                <div className="pseudo" >
+                    <label>Pseudo</label>
+                    <input type="text" placeholder="Entrez votre pseudo" />
                 </div>
                 <div className="password" >
                     <label>Mot de passe</label>

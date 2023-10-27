@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useRouteError } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Register from './pages/register/Register'
 import Login from './pages/login/Login'
 import Landing from './pages/landing/Landing'
@@ -12,10 +12,6 @@ function App() {
   const [show, setShow] = useState(false);
   const [toggle, setToggle] = useState(false);
 
-  function ErrorBoundary() {
-    const error = useRouteError();
-    console.error(error);
-  }
   return (
     <Router>
       <Header show={show} setShow={setShow} />
@@ -35,7 +31,6 @@ function App() {
         <Route
           path='*'
           element={<ErrorPage />}
-          errorElement={<ErrorBoundary />}
         />
         <Route
           path='/home'

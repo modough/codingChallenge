@@ -9,3 +9,6 @@
   padding: 100px 0;
   overflow: scroll;
 }
+.home::-webkit-scrollbar {
+  display: none;
+}

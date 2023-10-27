@@ -1,28 +1,35 @@
 import playerModel from '../models/playerModel.js';
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import crypto from 'crypto'
+import validator from 'validator';
 
 
-export const signup = (req, res, next) => {
-    //--------------
-    //password crypté sous forme de hash grâce au package de cryptage bcrypt
-    bcrypt.hash(req.body.password, 10)
-        .then(hash => {
-            const player = new playerModel({
-                email: req.body.email,
-                password: hash
-            });
-            player.save()
-                .then(() => res.status(201).json({ message: 'player account created !' }))
-                .catch(error => res.status(400).json({ error }));
-        })
-        .catch(error => res.status(500).json({ error }));
+export const register = async (req, res, next) => {
+    const { pseudo, email, password, confirmPassword, isVerify } = req.body
+    try {
+        let player = await playerModel.findOne({ email });
+        if (player) return res.status(400).json('Player already exists');
+        player = new playerModel({
+            pseudo,
+            email,
+            password: await bcrypt.hash(password, 10),
+            emailToken: crypto.randomBytes(64).toString("hex"),
+        });
+        if (!pseudo || !email || !password) return res.status(400).json("all fields are required...");
+        if (password !== confirmPassword) return res.status(400).json("password and confirm password does not match");
+        if (!validator.isEmail(email)) return res.status(400).json("Must be a valid email...");
+        if (!validator.isStrongPassword(password)) return res.status(400).json("Must be a strong password...");
+        const body = await player.save()
+        res.status(200).json({ body })
+    }
+    catch (error) { res.status(500).json({ error }) };
 };
 
 
 export const login = (req, res, next) => {
-    console.log(req.body.email)
-    playerModel.findOne({ email: req.body.email })
+    const { pseudo } = req.body;
+    playerModel.findOne({ pseudo })
         .then(player => {
             console.log(player)
             if (!player) {
@@ -46,3 +53,31 @@ export const login = (req, res, next) => {
         })
         .catch(error => res.status(500).json({ error }));
 };
+
+export const verifyEmail = async (req, res) => {
+    const { emailToken } = req.body;
+    try {
+        if (!emailToken) return res.status(404).json('EmailToken not found...');
+        const player = await playerModel.findOne({ emailToken });
+        if (player) {
+            player.emailToken = null;
+            player.isVerify = true;
+            await player.save();
+            const token = jwt.sign(
+                { playerId: player._id },
+                'RANDOM_TOKEN_SECRET',
+                { expiresIn: '24h' });
+            res.status(200).json({
+                _id: player._id,
+                pseudo: player.pseudo,
+                email: player.email,
+                token,
+                isVerify: player?.isVerify,
+            });
+
+        } else res.status(404).json("Email validation error, invalid token!")
+    } catch (error) {
+        console.log(error)
+        res.status(500).json(error.message)
+    }
+}

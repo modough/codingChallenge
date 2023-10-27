@@ -32,7 +32,19 @@ body {
   box-sizing: border-box;
   font-family: "Share Tech Mono", monospace;
 }
-
+.none {
+  display: none;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  min-height: 500px;
+  padding: 100px 100px 50px 100px;
+  box-shadow: 0px 5px 5px 5px rgba(0, 255, 255, 0.7);
+  border-radius: 10px;
+}
 a {
   text-decoration: none;
   color: var(--white);
@@ -45,7 +57,8 @@ button {
   cursor: pointer;
 }
 .email,
-.password {
+.password,
+.pseudo {
   display: flex;
   flex-direction: column;
 }

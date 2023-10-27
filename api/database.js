@@ -1,7 +1,8 @@
 import mongoose from "mongoose"
-import { MONGODB_KEY } from "./key.js"
+import 'dotenv/config'
 
-const databaseUrl = MONGODB_KEY;
+const databaseUrl = `mongodb+srv://mouhamedmbaye1:${process.env.MONGODB_PASSWORD}@cluster0.ytzghfb.mongodb.net/`;
+
 const dbConnection = async () => {
     try {
         await mongoose.connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true })

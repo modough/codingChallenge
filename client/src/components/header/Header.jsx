@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { AiOutlineClose } from 'react-icons/ai';
 
+
 function Header({ setShow, show }) {
     const { pathname } = useLocation()
 
