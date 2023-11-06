@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const url = "http://localhost:3001"
+const serverUrl = "http://localhost:3001"
 
 export const registerPlayer = createAsyncThunk('registerPlayer', async (registerInfos) => {
     const { pseudo, email, password, confirmPassword } = registerInfos;
@@ -16,8 +16,8 @@ export const registerPlayer = createAsyncThunk('registerPlayer', async (register
             confirmPassword
         })
     };
-    const promise = await fetch("http://localhost:3001/api/register", requestOptions)
-    const response = await promise.json()
+    const request = await fetch(`${serverUrl}/api/register`, requestOptions)
+    const response = await request.json()
     if (!response) {
         console.log('error')
     }
@@ -25,8 +25,8 @@ export const registerPlayer = createAsyncThunk('registerPlayer', async (register
 });
 
 
-export const loginPlayer = (loginDetails) => {
-    const { pseudo, password } = loginDetails;
+export const loginPlayer = createAsyncThunk('loginPlayer', async (loginInfos) => {
+    const { pseudo, password } = loginInfos;
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -37,8 +37,30 @@ export const loginPlayer = (loginDetails) => {
             password
         })
     };
-    fetch(`${url}/api/login`, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-}
+    const request = await fetch(`${serverUrl}/api/login`, requestOptions)
+    const response = await request.json()
+    if (!response) {
+        console.log('error')
+    }
+    return response
+});
+
+
+export const verifyEmail = async (emailToken) => {
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailToken
+        })
+    };
+
+    const request = await fetch(`${serverUrl}/api/verify-email`, requestOptions);
+    const response = await request.json()
+    if (!response) {
+        console.log('error')
+    }
+    return response
+};

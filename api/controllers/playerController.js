@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import crypto from 'crypto'
 import validator from 'validator';
+import sendVerifyEmail from '../utils/sendVerifyEmail.js';
 
 
 export const register = async (req, res, next) => {
@@ -20,16 +21,18 @@ export const register = async (req, res, next) => {
         if (password !== confirmPassword) return res.status(400).json("password and confirm password does not match");
         if (!validator.isEmail(email)) return res.status(400).json("Must be a valid email...");
         if (!validator.isStrongPassword(password)) return res.status(400).json("Must be a strong password...");
-        const body = await player.save()
-        res.status(200).json({ body })
+        const body = await player.save();
+        sendVerifyEmail(player);
+        return res.status(200).json({ body });
     }
     catch (error) { res.status(500).json({ error }) };
 };
 
 
-export const login = (req, res, next) => {
+export const login = async (req, res, next) => {
     const { pseudo } = req.body;
-    playerModel.findOne({ pseudo })
+    console.log(pseudo)
+    await playerModel.findOne({ pseudo })
         .then(player => {
             console.log(player)
             if (!player) {
@@ -42,6 +45,8 @@ export const login = (req, res, next) => {
                     }
                     res.status(200).json({
                         playerId: player._id,
+                        pseudo: player.pseudo,
+                        email: player.email,
                         token: jwt.sign(
                             { playerId: player._id },
                             'RANDOM_TOKEN_SECRET',
@@ -63,19 +68,14 @@ export const verifyEmail = async (req, res) => {
             player.emailToken = null;
             player.isVerify = true;
             await player.save();
-            const token = jwt.sign(
-                { playerId: player._id },
-                'RANDOM_TOKEN_SECRET',
-                { expiresIn: '24h' });
             res.status(200).json({
                 _id: player._id,
                 pseudo: player.pseudo,
                 email: player.email,
-                token,
                 isVerify: player?.isVerify,
             });
-
-        } else res.status(404).json("Email validation error, invalid token!")
+        }
+        else res.status(404).json("Email validation error, invalid token!")
     } catch (error) {
         console.log(error)
         res.status(500).json(error.message)

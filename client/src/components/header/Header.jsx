@@ -4,10 +4,12 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { AiOutlineClose } from 'react-icons/ai';
-
+import { useSelector } from 'react-redux';
 
 function Header({ setShow, show }) {
-    const { pathname } = useLocation()
+    const { token } = useSelector((state) =>
+        state.playerReducer
+    )
 
     return (
         <section className='header'>
@@ -26,8 +28,14 @@ function Header({ setShow, show }) {
                     <li>S&apos;inscrire</li>
                 </Link>
                 {!show ?
-                    <RxHamburgerMenu className={pathname !== '/' && 'menuBurger'} onClick={() => setShow(!show)} /> :
-                    <AiOutlineClose className={pathname !== '/' && 'close'} onClick={() => setShow(!show)} />
+                    <RxHamburgerMenu
+                        className={token && 'menuBurger'}
+                        onClick={() => setShow(!show)}
+                    /> :
+                    <AiOutlineClose
+                        className={token && 'close'}
+                        onClick={() => setShow(!show)}
+                    />
                 }
             </ul>
         </section >

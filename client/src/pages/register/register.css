@@ -5,7 +5,7 @@
   justify-content: center;
   padding: 250px;
   background-image: url(/src/assets/bg.webp);
-  min-height: 700px;
+  min-width: 755px;
 }
 
 .blur {

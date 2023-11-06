@@ -7,9 +7,9 @@ import { FaSquareXTwitter, FaYoutube, FaLinkedin, FaTwitch } from 'react-icons/f
 import { languageArray } from '../languageLink/LanguageLink';
 import PropTypes from 'prop-types';
 
-function Footer({ show, toggle }) {
+function Footer({ toggle }) {
     return (
-        <section className={`footer ${toggle ? 'toggle' : ''} ${show ? 'show' : ''}`}>
+        <section className={`footer ${toggle ? 'toggle' : ''}`}>
             <div className='logo'>
                 <Link to='/'>
                     <div className='logoDiv'>

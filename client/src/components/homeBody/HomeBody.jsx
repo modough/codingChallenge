@@ -49,7 +49,7 @@ function HomeBody({ toggle, show }) {
             <div className='homeVideo'>
                 <h2>Parcourez la liste des videos ...</h2>
                 <div className='homeVideo-container'>
-                    <Carousel infiniteLoop showThumbs={false}>
+                    <Carousel autoPlay infiniteLoop showThumbs={false}>
                         {videoData?.map((video) => <Video key={video.id} title={video.name} embedId={video?.id} description={video.desc} />)}
                     </Carousel>
                 </div>

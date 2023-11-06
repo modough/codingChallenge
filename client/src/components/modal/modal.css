@@ -6,7 +6,7 @@
   background-color: var(--white);
   box-shadow: 0px 0px 5px 5px rgba(0, 255, 255, 0.7);
 }
-.close {
+.closeModal {
   font-weight: bolder;
   font-size: 20px;
   position: absolute;
@@ -17,6 +17,6 @@
   border-radius: 50%;
   cursor: pointer;
 }
-.close:hover {
+.closeModal:hover {
   color: var(--white);
 }

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { registerPlayer, loginPlayer } from "./fetchLocalApi";
+import { registerPlayer, loginPlayer, verifyEmail } from "./fetchLocalApi";
 
 
 const initialState = {
@@ -9,33 +9,51 @@ const initialState = {
     id: null,
     isVerify: false,
     emailToken: null,
+    isLoading: false,
+    error: null,
 }
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
         createPlayer: (registerPlayer, (state, action) => {
-            const { pseudo, email, _id, isVerify, emailToken } = action.payload.body
-            console.log(action)
+            const { pseudo, email, _id, isVerify, emailToken } = action.payload
             state.pseudo = pseudo
             state.email = email
             state.id = _id
             state.isVerify = isVerify
             state.emailToken = emailToken
+            state.isLoading = true
+
         }),
         logout: () => {
             return initialState
         },
-        login: (loginPlayer.fulfilled, (state, action) => {
+        updateUser: (verifyEmail, (state, action) => {
             console.log(action)
-            state.token = action.payload.body.token
-            state.pseudo = action.payload.body.pseudo
-            state.email = action.payload.body.email
-            state.id = action.payload.body._id
+            state.isVerify = action.payload.isVerify
         })
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(loginPlayer.fulfilled, (state, action) => {
+                console.log(action)
+                state.token = action.payload.token
+                state.pseudo = action.payload.pseudo
+                state.email = action.payload.email
+                state.id = action.payload.playerid
+                state.token = action.payload.token
+                state.isVerify = action.payload.isVerify
+                state.error = action.payload.error
+            })
+            .addCase(loginPlayer.rejected, (state) => {
+                state.token = null;
+                state.pseudo = null;
+                state.id = null;
+            })
     }
 });
 
 
-export const { createPlayer, logout, login } = authSlice.actions
+export const { createPlayer, logout, login, updateUser } = authSlice.actions
 export default authSlice.reducer;

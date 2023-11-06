@@ -7,6 +7,7 @@ import Header from './components/header/Header'
 import Home from './pages/home/Home'
 import { useState } from 'react'
 import Footer from './components/footer/Footer'
+import VerifyEmail from './pages/verifyEmail/VerifyEmail'
 
 function App() {
   const [show, setShow] = useState(false);
@@ -16,6 +17,10 @@ function App() {
     <Router>
       <Header show={show} setShow={setShow} />
       <Routes>
+        <Route
+          path='/verify-email'
+          element={<VerifyEmail />}
+        />
         <Route
           path='/'
           element={<Landing />}
