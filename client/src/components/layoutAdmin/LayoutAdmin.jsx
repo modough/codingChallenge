@@ -6,7 +6,6 @@ function LayoutAdmin({ children }) {
     const { token } = useSelector((state) =>
         state.playerReducer
     )
-    console.log(token)
     if (!token) return <Login />
     if (token) return children
 }

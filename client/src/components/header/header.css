@@ -23,8 +23,7 @@
 .pagesLink {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 250px;
+  gap: 50px;
 }
 .pagesLink li {
   color: var(--orange);

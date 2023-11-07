@@ -6,7 +6,6 @@ function HomeSidebar({ show, toggle, setToggle }) {
     return (
         <section className={`home-sidebar ${toggle ? 'toggle' : ''} ${show ? 'show' : ''}`}>
             <LanguageLink toggle={toggle} setToggle={setToggle} />
-
         </section>
     )
 }

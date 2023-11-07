@@ -12,7 +12,6 @@ import {
     TbSql,
 
 } from 'react-icons/tb'
-
 import { FaJava, FaRust } from 'react-icons/fa'
 import { SiCplusplus, SiCsharp } from 'react-icons/si'
 
@@ -61,7 +60,6 @@ export const languageArray = [
 ]
 
 function LanguageLink({ toggle, setToggle }) {
-
     return (
         <section className='languageLink'>
             {languageArray.map((language) => (
@@ -76,9 +74,6 @@ function LanguageLink({ toggle, setToggle }) {
             <div className='languageLink-toggle' onClick={() => setToggle(!toggle)}>
                 {!toggle ? <MdArrowBackIosNew /> : <MdArrowForwardIos />}
             </div>
-            <Link to='/login' className='loginLink'>
-                <li>Identifier-vous !</li>
-            </Link>
         </section>
     )
 }

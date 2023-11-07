@@ -24,7 +24,7 @@
     display: none;
   }
   .home-sidebar.show {
-    min-width: 220px;
+    max-width: 60px;
     display: flex;
     z-index: 101;
   }
