@@ -20,7 +20,10 @@ function Footer({ toggle }) {
                 </Link>
             </div>
             <div className='footer-right'>
-                <p>Coding Challenge est une application en ligne pour apprendre les concepts de base de plusieurs langages de programmation. Il contient des cours, des tutos et plusieurs tests avec vérification instantanée.</p>
+                <div className='paragraph'>
+                    <p>Coding Challenge est une application en ligne pour apprendre les concepts de base de plusieurs langages de programmation. Il contient des cours, des tutos et plusieurs tests avec vérification instantanée.</p>
+                    <p>Copyrights © 2023 Coding Challenge. All right reserved.</p>
+                </div>
                 <div className='lessons'>
                     {languageArray.map((language) =>
                         <Link key={language.language} to={language.language}>{language.language}</Link>
@@ -37,6 +40,7 @@ function Footer({ toggle }) {
                         <FaLinkedin className='linkedin' />
                         <FaTwitch className='twitch' />
                     </div>
+
                 </div>
             </div>
         </section>

@@ -34,7 +34,11 @@ function Header({ setShow, show }) {
                     <Link to='/register'>
                         <li>S&apos;inscrire</li>
                     </Link>
-                </Fragment> : <p className='logout' style={{ 'color': 'orange' }} onClick={handleLogout}>Logout</p>}
+                </Fragment> :
+                    <p className='logout'
+                        onClick={handleLogout}>Logout
+                    </p>
+                }
                 {!show ?
                     <RxHamburgerMenu
                         className={token && 'menuBurger'}

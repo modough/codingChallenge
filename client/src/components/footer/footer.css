@@ -3,8 +3,8 @@
   flex-direction: column;
   gap: 50px;
   width: 100%;
-  min-height: 300px;
-  padding: 50px 50px 50px 250px;
+  min-height: 200px;
+  padding: 30px 30px 50px 250px;
   background-color: var(--dark-blue);
 }
 
@@ -30,14 +30,17 @@
 
 .footer-right {
   display: flex;
-  justify-content: space-between;
+  gap: 100px;
   width: 100%;
 }
 .footer-right p {
   color: var(--white);
-  width: 25%;
+}
+.paragraph {
+  flex: 1;
 }
 .lessons {
+  flex: 1;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -55,6 +58,9 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+.social {
+  flex: 1;
 }
 .socialMedia svg {
   cursor: pointer;

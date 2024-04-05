@@ -17,19 +17,21 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         createPlayer: (registerPlayer, (state, action) => {
-            const { pseudo, email, _id, isVerify, emailToken } = action.payload
+            console.log(action)
+            const { pseudo, email, _id, isVerify, emailToken, error } = action.payload
             state.pseudo = pseudo
             state.email = email
             state.id = _id
             state.isVerify = isVerify
             state.emailToken = emailToken
             state.isLoading = true
+            state.error = error
 
         }),
         logout: () => {
             return initialState
         },
-        updateUser: (verifyEmail, (state, action) => {
+        updatePlayer: (verifyEmail, (state, action) => {
             console.log(action)
             state.isVerify = action.payload.isVerify
         })
@@ -55,5 +57,5 @@ const authSlice = createSlice({
 });
 
 
-export const { createPlayer, logout, login, updateUser } = authSlice.actions
+export const { createPlayer, logout, login, updatePlayer } = authSlice.actions
 export default authSlice.reducer;

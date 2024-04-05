@@ -6,6 +6,7 @@ import { verifyEmail } from '../../features/fetchLocalApi';
 
 function VerifyEmail() {
     const [searchParams, setSearchParams] = useSearchParams();
+    console.log(setSearchParams());
     const emailToken = searchParams.get('emailToken');
     useEffect(() => {
         verifyEmail(emailToken)

@@ -64,3 +64,21 @@ export const verifyEmail = async (emailToken) => {
     }
     return response
 };
+export const updatePlayer = async (updateInfos) => {
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(
+            updateInfos
+        )
+    };
+    const request = await fetch(`${serverUrl}/api/update`, requestOptions);
+    const response = await request.json()
+    console.log(response)
+    if (!response) {
+        console.log('error')
+    }
+    return response
+};

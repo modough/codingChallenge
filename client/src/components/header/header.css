@@ -32,8 +32,13 @@
 .pagesLink li:hover {
   color: var(--blue);
 }
-.pagesLink .menuBurger {
+.close,
+.menuBurger {
   display: none;
+}
+.logout {
+  color: var(--orange);
+  cursor: pointer;
 }
 @media screen and (max-width: 1520px) {
   .pagesLink {

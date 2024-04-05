@@ -20,7 +20,6 @@ function Login() {
         e.preventDefault()
         let loginInfos = { pseudo, password }
         await dispatch(loginPlayer(loginInfos)).then((action) => {
-            console.log(action)
             if (action.payload) {
                 setPseudo('');
                 setPassword('');
@@ -33,6 +32,7 @@ function Login() {
     return (
         <section className='login'>
             <form>
+                <h2>Connexion</h2>
                 <div className="pseudo" >
                     <label>Pseudo</label>
                     <input
@@ -59,7 +59,7 @@ function Login() {
                     <Link to='/register'>
                         <p>Pas de compte ? Inscrivez-vous</p>
                     </Link>
-                    <Link to='/'>
+                    <Link to='/update-password'>
                         <p>Récuperer votre mot de passe.</p>
                     </Link>
                 </div>

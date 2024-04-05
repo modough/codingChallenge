@@ -8,6 +8,7 @@ import Home from './pages/home/Home'
 import { useState } from 'react'
 import Footer from './components/footer/Footer'
 import VerifyEmail from './pages/verifyEmail/VerifyEmail'
+import PasswordReset from './pages/passwordReset/PasswordReset'
 
 function App() {
   const [show, setShow] = useState(false);
@@ -36,6 +37,10 @@ function App() {
         <Route
           path='*'
           element={<ErrorPage />}
+        />
+        <Route
+          path='/update-password'
+          element={<PasswordReset />}
         />
         <Route
           path='/home'
